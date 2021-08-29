@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import MovieCard from "./MovieCard";
 export default function Filter(props) {
 
-
+ 
 
     const [title, setTitle] = useState('');
-    const [newMovies, setMovies] = useState(props.movies);
+    const [newMovies, setMovies] = useState('');
     const [rating, setRating] = useState('');
 
 
@@ -51,13 +51,10 @@ export default function Filter(props) {
                 </div> 
             </form>
 
-            <div class="row"> 
-               
-                { 
-                newMovies.map(movie => (
-                    <MovieCard movie={movie} />
-
-                ))}
+            <div className="row"> 
+                 {   newMovies.length != 0 ?   newMovies.map(movie => (
+                    <MovieCard movie={movie} />   )) : ''
+                }
             </div>
         </div>
     );

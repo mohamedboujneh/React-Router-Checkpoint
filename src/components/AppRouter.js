@@ -1,17 +1,30 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'; 
-import MovieCard from './MovieCard';
+import {  Route } from 'react-router-dom'; 
+ import MovieDescription from './MovieDescription';
 import MovieList from './MovieList';
+ 
+class AppRouter extends React.Component  {
 
-const AppRouter = () => (
-  <BrowserRouter>
-    <div className="container">
-      <Switch>
-        <Route component={MovieList} path="/" exact={true} />
-        <Route  path="/description"  component={MovieCard}/>
-      </Switch>
+
+  state = {
+    movies: [],
+};
+
+addMovie = movie => {
+    this.setState(state => ({
+
+        movies: [movie, ...state.movies]
+    }));
+};
+render() {
+  return(
+     <div className="container">
+     
+        <Route  path="/" exact   render={(props) => <MovieList {...props} addMovie={this.addMovie}  movies={this.state.movies} />} />
+        <Route  path="/description/:id"  render={(props) => <MovieDescription    {...props}   movies={this.state.movies} />} />
+     
     </div>
-  </BrowserRouter>
-);
-
+ );
+  }
+}
 export default AppRouter;

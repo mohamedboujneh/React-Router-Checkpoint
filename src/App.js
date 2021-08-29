@@ -1,17 +1,12 @@
  import './App.css';
-import MovieList from './components/MovieList';
-import { Link,   Route,Redirect, BrowserRouter, Switch } from 'react-router-dom';
-import MovieDescription from "./components/MovieDescription";
-import { useHistory } from "react-router-dom";
- 
+import AppRouter from './components/AppRouter';
+  
 function App() {
   return (
     
    <div className="App">
-     <BrowserRouter>
-   <MovieList />
-   </BrowserRouter>
- </div>
+     <AppRouter/>
+  </div>
      
    );
 }

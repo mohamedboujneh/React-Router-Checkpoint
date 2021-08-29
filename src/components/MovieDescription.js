@@ -1,25 +1,23 @@
 import React ,{Component} from "react";
-import { NavLink } from "react-router-dom";
-import Avangers from "./avangers.jpg";
+import { Link } from "react-router-dom";
+ import Avangers from "./avangers.jpg";
  
-
-
 
 class MovieDescription extends Component{
     render(){
 
-
-
+        let movie= this.props.movies.find(movie => movie.id==this.props.match.params.id )
         return(
-            <div className="card" style={{ width: '18rem' }}>
-                     <NavLink to="/" >     Go Back    </NavLink>
+            <div className="card" style={{ width: '18rem' }}> 
+                <Link to="/" exact>     Go Back     </Link>
             <img className="card-img-top" src={Avangers}  alt="img movie"/>
             <div className="card-body">
-                <h5 className="card-title">Title :  </h5>
-                <h5 className="card-title">Rating :  </h5>
+                <h5 className="card-title">Description :  {  movie.description }  </h5>
                 
-    
-            </div>
+                <embed src={movie.url} allowFullScreen="true" width={425} height={344} />
+               
+               </div>
+               
         </div>
     
         );
